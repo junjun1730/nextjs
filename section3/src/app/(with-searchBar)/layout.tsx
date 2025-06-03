@@ -1,3 +1,6 @@
+import ClientComponent from "@/components/client-component";
+import SearchBar from "../../components/searchBar";
+
 export default function SearchLayout({
   children,
 }: {
@@ -5,7 +8,11 @@ export default function SearchLayout({
 }) {
   return (
     <div>
-      <div>searchBar</div>
+      <SearchBar />
+      <ClientComponent>
+        <></>
+      </ClientComponent>
+
       <div>{children}</div>
     </div>
   );

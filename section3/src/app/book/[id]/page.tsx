@@ -1,3 +1,5 @@
+import ClientComponent from "@/components/client-component";
+
 export default async function BookPage({
   params,
 }: {
@@ -5,5 +7,12 @@ export default async function BookPage({
 }) {
   const { id } = await params;
   console.log(id);
-  return <div>Book Page [id] : {id}</div>;
+  return (
+    <div>
+      Book Page [id] : {id}
+      <ClientComponent>
+        <></>
+      </ClientComponent>
+    </div>
+  );
 }
