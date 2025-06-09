@@ -1,13 +1,16 @@
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
+import { delay } from "@/util/delay";
+import { Suspense } from "react";
 
 //export const dynamic = "force-static"; // 강제로 Static 페이지로 설정, 쿼리스트링등은 자동으로 undifined로 처리됨
 
-export default async function Page({
+async function SearchResult({
   searchParams,
 }: {
   searchParams: Promise<{ q?: string }>;
 }) {
+  await delay(1500);
   const { q } = await searchParams;
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}`,
@@ -25,5 +28,20 @@ export default async function Page({
         <BookItem key={book.id} {...book} />
       ))}
     </div>
+  );
+}
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  return (
+    <Suspense
+      key={(await searchParams).q}
+      fallback={<div>Loading search results...</div>}
+    >
+      <SearchResult searchParams={searchParams} />
+    </Suspense>
   );
 }
