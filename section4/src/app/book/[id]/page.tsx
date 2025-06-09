@@ -2,7 +2,7 @@ import { BookData } from "@/types";
 import style from "./page.module.css";
 import { notFound } from "next/navigation";
 
-export const dynamicParams = false; // 동적 파라미터를 사용하지 않음. 모두 404로 처리
+//export const dynamicParams = false; // 동적 파라미터를 사용하지 않음. 모두 404로 처리
 
 // 정적 페이지 생성, Page router의 GetStaticPaths
 export function generateStaticParams() {

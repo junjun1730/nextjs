@@ -1,6 +1,8 @@
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
 
+//export const dynamic = "force-static"; // 강제로 Static 페이지로 설정, 쿼리스트링등은 자동으로 undifined로 처리됨
+
 export default async function Page({
   searchParams,
 }: {
